@@ -46,4 +46,4 @@ def on_chat_message(msg):
 
 bot.message_loop(on_chat_message)
 while 1:
-    time.sleep(10)
+    time.sleep(2)

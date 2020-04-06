@@ -54,4 +54,5 @@ def on_callback_query(msg):
 bot.message_loop({'chat': on_chat_message,
                   'callback_query': on_callback_query})
 while 1:
+    print("...")
     time.sleep(10)

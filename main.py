@@ -4,8 +4,7 @@ import time
 import string
 from pprint import pprint
 from config import token, my_chat_id
-
-# from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 
 bot = telepot.Bot(token)
 

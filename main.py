@@ -1,10 +1,13 @@
-import telepot
-import sys
 import time
-import string
-from pprint import pprint
-from config import token, my_chat_id
+
+import telepot
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from apscheduler.schedulers.background import BackgroundScheduler
+from telepot.loop import MessageLoop
+
+from config import token, my_chat_id
+
+bot = telepot.Bot(token)
 
 
 def on_chat_message(msg):
@@ -43,12 +46,17 @@ def on_callback_query(msg):
     if query_data[:10] == 'pubblicato':
         bot.answerCallbackQuery(query_id, text='Ok')
         bot.sendMessage(chat_id, "Pubblicato!")
+
+def main():
+    
+    bot.message_loop({'chat': on_chat_message,
+                      'callback_query': on_callback_query})
+    print("Listening...")
+
+    while 1:
+        time.sleep(10)
         
 
-bot = telepot.Bot(token)
-bot.message_loop({'chat': on_chat_message,
-                  'callback_query': on_callback_query})
-print("Listening...")
+if __name__ == '__main__':
+    main()
 
-while 1:
-    time.sleep(10)
